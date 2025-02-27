@@ -1,4 +1,6 @@
 #include<stdio.h>
+// function prototype
+void one_thee(void);
 void one_three(void){
 puts("one");
 }
