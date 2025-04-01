@@ -1,90 +1,93 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include<ctype.h>
-
-int isLower(char c);
-int isAlpha(char c);
-int toLower(char c);
-int toUpper(char c);
-void printInLower(const char *str);
-void printInReversedCase(const char *str);
-
-
-int main (void){
-
-// create a string
-char str[] = "Hello CoP2271!";
-
-// print the string
-puts("pinting with printf ");
-printf("%s\n\n",str);
-//2
-puts("with loop");
-for(int i = 0; str[i] != '\0';i++){
-    printf("%c", str[i]);
-    putchar(str[i]);
+#include <stdbool.h>
+/*
+Checks is the given character an uppercase.
+*/
+bool isUpper(char c);
+/*
+Checks is the given character a lowercase.
+*/
+bool isLower(char c);
+/*
+Checks is the given character a letter.
+*/
+bool isAlpha(char c);
+/*
+Checks is the given character a letter or a digit.
+*/
+bool isAlnum(char c);
+char toLower(char c);
+int main(void) {
+// Create a character
+char ch = 'B';
+// Create a boolean variable
+const bool isHappyAfterSecondExamInIntroClass = true; //false
+// Test isUpper
+printf("isUpper(%c) = %d\n", ch, isUpper(ch));
+// Test isLower
+printf("isLower(%c) = %d\n", ch, isLower(ch));
+// Test isAlpha
+printf("isAlpha(%c) = %d\n", ch, isAlpha(ch));
+// Test isAlnum
+printf("isAlnum(%c) = %d\n", ch, isAlnum(ch));
+//////////////////////////////////////////////////////////
+// Create a string
+char str[] = "HeLlO ThErE!";
+// Printing the string
+puts("Printing with printf");
+printf("%s\n\n", str);
+puts("Printing with a loop");
+for (int i = 0; str[i] != '\0'; i++) { // str[i] != '\0' - continue till the
+end of the string
+printf("%c", str[i]);
 }
-puts("");
-// printing with puts
-puts("printing with puts");
-puts(str);
-puts("");
- 
-printf("%d\n\n",isLower(str[0]));
-printf("%d\n\n",isAlpha(str[0]));
-printf("%d\n\n",isAlpha(str[13]));
-puts("Print a string all lower case\n");
-printInLower(str);
 puts("\n");
-puts()
-
+puts("Printing with puts");
+puts(str);
+puts("\n");
+puts("Print the string in lowercase");
+for (int i = 0; str[i] != '\0'; i++) {
+putchar(toLower(str[i]));
+}
 return 0;
-
 }
-int isLower(char c){
-    if(c>='a' && c<='z'){
-        return 1;
-    }else{
-        return 0;
-    }
+bool isUpper(char c) {
+if (c >= 'A' && c <= 'Z') {
+return true;
 }
-int isUpper(char c){
-    if(c>='A' && c<='Z'){
-        return 1;
-    }else{
-        return 0;
-    }
-
-
+else {
+return false;
 }
-int isAlpha(char c){
-    if(isLower(c)||isUpper(c)){
-
-    }
 }
-int toLower(char c){
-    if(isUpper(c)){
-        return c + 32;
-    }else{
-        return(int) c;
-    }
+bool isLower(char c) {
+if (c >= 'a' && c <= 'z') {
+return true;
 }
-int toUpper(char c){
-    
+else {
+return false;
 }
-void printInLower(const char *str){
-    for(int i = 0; str[i] != '\0';i++){
-        
-        putchar(toLower(str[i]));
-    }
 }
-void printInReversedCase(const char *str){
-    for(int i = 0; str[i] != '\0';i++){
-        if(isUpper(str[i])){
-            putchar(toLower(str[i]));
-        }else{
-            putchar(toUpper(str[i]));
-        }
-
+bool isAlpha(char c) {
+if (isUpper(c) == true || isLower(c) == true) {
+return true;
+}
+else {
+return false;
+}
+}
+bool isAlnum(char c) {
+if (isAlpha(c) == true || (c >= '0' && c <= '9')) {
+return true;
+}
+else {
+return false;
+}
+}
+char toLower(char c) {
+if (isUpper(c) == true) {
+return c + 32;
+}
+else {
+return c;
+}
 }
